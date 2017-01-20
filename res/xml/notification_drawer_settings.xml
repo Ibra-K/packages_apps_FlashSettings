@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2016 The Pure Nexus Project
-     Copyright (C) 2016 Flash ROM
+     Copyright (C) 2016-2017 Flash ROM
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -75,6 +75,12 @@
             android:summaryOn="@string/qs_tile_title_visibility_summary_on"
             android:summaryOff="@string/qs_tile_title_visibility_summary_off"
             android:defaultValue="true"/>
+
+        <com.flash.settings.preferences.SecureSettingSwitchPreference
+            android:key="qs_easy_toggle"
+            android:title="@string/qs_easy_toggle_title"
+            android:summary="@string/qs_easy_toggle_summary"
+            android:defaultValue="false" />
 
         <com.flash.settings.preferences.CustomSeekBarPreference
             android:key="qs_layout_columns"
