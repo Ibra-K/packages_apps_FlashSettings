@@ -41,11 +41,13 @@ public class LockScreenSettings extends SettingsPreferenceFragment {
 
     private static final String KEYGUARD_TORCH = "keyguard_toggle_torch";
     private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
+    private static final String FP_UNLOCK_KEYSTORE = "fp_unlock_keystore";
 
     private FingerprintManager mFingerprintManager;
 
     private SystemSettingSwitchPreference mLsTorch;
     private SystemSettingSwitchPreference mFingerprintVib;
+    private SystemSettingSwitchPreference mFpKeystore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,8 +66,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment {
 
         mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
         mFingerprintVib = (SystemSettingSwitchPreference) findPreference(FINGERPRINT_VIB);
-        if (!mFingerprintManager.isHardwareDetected()){
+        mFpKeystore = (SystemSettingSwitchPreference) findPreference(FP_UNLOCK_KEYSTORE);
+        if (!mFingerprintManager.isHardwareDetected()) {
             secureCategory.removePreference(mFingerprintVib);
+            secureCategory.removePreference(mFpKeystore);
         }
 
         if (!lockPatternUtils.isSecure(MY_USER_ID)) {
@@ -78,4 +82,3 @@ public class LockScreenSettings extends SettingsPreferenceFragment {
         return MetricsEvent.FLASH;
     }
 }
-
